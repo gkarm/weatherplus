@@ -91,7 +91,8 @@ const WeatherPlusApp = () => {
                         <div className="text">Humidity</div>
                     </div>
                 </div>
-            </div>
+
+
             <div className="element">
                 <img src={wind_icon} alt="" className="icon"/>
                 <div className="data">
@@ -99,6 +100,8 @@ const WeatherPlusApp = () => {
                     <div className="text">Wind Speed</div>
 
                 </div>
+
+            </div>
             </div>
         </div>
     );

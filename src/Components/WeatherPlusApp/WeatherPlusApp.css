@@ -1,6 +1,6 @@
 .container{
     width:607px;
-    height: 850px;
+    height: 950px;
     margin: auto;
     margin-top: 75px;
     border-radius: 12px;
@@ -65,7 +65,7 @@
     margin: auto;
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
 }
 .data{
     font-size: 20px;
