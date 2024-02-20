@@ -1,11 +1,15 @@
 
 import './App.css'
+import WeatherPlusApp from "./Components/WeatherPlusApp/WeatherPlusApp.jsx";
+
 
 function App() {
 
   return (
-    <h1> Hello world ! </h1>
-  )
+    <div className="App">
+      <WeatherPlusApp/>
+    </div>
+  );
 }
 
 export default App
