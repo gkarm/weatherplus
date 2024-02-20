@@ -10,7 +10,7 @@ import wind_icon from "/src/assets/wind.png";
 import humidity_icon from "/src/assets/humidity.png";
 const WeatherPlusApp = () => {
 
-    let api_key= "7b3a642f203299b2c075a1103d9f16c8";
+    let api_key= "b8a5b939482c713ddb5f0c28ee6c2dd6";
     const [wicon,setWicon] = useState(cloud_icon);
 
     const search = async () => {
@@ -19,12 +19,12 @@ const WeatherPlusApp = () => {
         {
             return 0;
         }
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&appid=${api_key}&units=metric`;
         let response = await fetch(url);
         let data = await response.json();
         const humidity = document.getElementsByClassName("humidity-percent");
         const wind = document.getElementsByClassName("wind-rate");
-        const temperature = document.getElementsByClassName("temperature");
+        const temperature = document.getElementsByClassName("weather-temp");
         const location = document.getElementsByClassName("weather-location");
 
         humidity[0].innerHTML = data.main.humidity+" %";
@@ -73,7 +73,7 @@ const WeatherPlusApp = () => {
     return (
         <div className='container'>
             <div className="top-bar">
-                <input type="text" className="cityInput" placeholder='Search'/>
+                <input type="text" className="cityInput" placeholder="Search"/>
                 <div className="search-icon" onClick={()=>{search()}}>
                     <img src={search_icon} alt=""/>
                 </div>
