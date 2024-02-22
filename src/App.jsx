@@ -1,14 +1,17 @@
 
 import './App.css'
 import WeatherPlusApp from "./Components/WeatherPlusApp/WeatherPlusApp.jsx";
+import Login from "./Components/LoginRegistration/Login.jsx";
 
 
 function App() {
 
   return (
-    <div className="App">
-      <WeatherPlusApp/>
-    </div>
+      <div className="App">
+
+        <Login/>
+      </div>
+
   );
 }
 
