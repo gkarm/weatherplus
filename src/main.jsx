@@ -16,7 +16,7 @@ import LoginForm from "./Components/LoginForm.jsx";
 
 const router = createBrowserRouter([
     {
-        path: "/signup",
+        path: '/',
         element: <SignUpForm/>,
     },
     {

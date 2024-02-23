@@ -3,8 +3,8 @@ import './style.css';
 import {Link} from "react-router-dom";
 import {auth} from './firebase.jsx';
 import {signInWithEmailAndPassword } from 'firebase/auth'
-import {Navigate} from "react-router-dom";
 import {useNavigate} from 'react-router-dom'
+
 
 
 const LoginForm = () => {
@@ -29,13 +29,6 @@ const LoginForm = () => {
 
     };
 
-    // redirect after login
-
-
-
-
-
-
 
     return (
         <div className='signup-container'>
@@ -50,7 +43,7 @@ const LoginForm = () => {
                     <input type="password" onChange={(e) =>setPassword(e.target.value)}/>
                 </label>
                 <button type='submit'>Login</button> <br/>
-                <p>Don't Have an account? <Link to="/signup">Register</Link></p>
+                <p>Don't Have an account? <Link to="/">Register</Link></p>
             </form>
         </div>
     );

@@ -3,18 +3,20 @@ import './style.css';
 import {Link} from "react-router-dom";
 import {auth} from './firebase.jsx';
 import {createUserWithEmailAndPassword } from 'firebase/auth';
-
+import {useNavigate} from "react-router-dom";
 
 
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate=useNavigate()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
            await createUserWithEmailAndPassword(auth, email, password);
+             navigate('/login')
             console.log("Account Created");
 
         } catch (err) {
