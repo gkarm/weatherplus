@@ -1,26 +1,31 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import WeatherPlusApp from "./Components/WeatherPlusApp/WeatherPlusApp.jsx"
-import  './Components/LoginRegistration/Login.css'
 import  './Components/WeatherPlusApp/WeatherPlusApp.css'
-
+import './Components/style.css'
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import SignUpForm from './Components/SignUpForm.jsx'
+import LoginForm from "./Components/LoginForm.jsx";
+
 
 
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <App/>,
+        path: "/signup",
+        element: <SignUpForm/>,
     },
     {
         path: "WeatherPlusApp",
         element: <WeatherPlusApp/>,
+    },
+    {
+        path: '/login',
+        element: <LoginForm/>,
     },
 ]);
 

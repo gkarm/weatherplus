@@ -1,16 +1,16 @@
 
 import './App.css'
-import WeatherPlusApp from "./Components/WeatherPlusApp/WeatherPlusApp.jsx";
-import Login from "./Components/LoginRegistration/Login.jsx";
-
+import React from "react";
+import SignUpForm from './Components/SignUpForm.jsx';
+import './Components/style.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
 
   return (
-      <div className="App">
-
-        <Login/>
-      </div>
+     <>
+     <SignUpForm />
+     </>
 
   );
 }
