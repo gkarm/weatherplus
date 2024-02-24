@@ -30,7 +30,7 @@ const SignUpForm = () => {
 
     return (
         <div className='signup-container'>
-            <form className='signup-form' onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
                 <label htmlFor="email">
                     Email:
@@ -40,11 +40,11 @@ const SignUpForm = () => {
                     Password:
                     <input type="password" onChange={(e) =>setPassword(e.target.value)}/>
                 </label>
-                <button type='submit'>Sign Up</button> <br/>
+                <button type="submit">Sign Up</button> <br/>
                 <p>Already Registered? <Link to="/login">Login</Link></p>
             </form>
         </div>
-    )
+    );
 };
 
 export default SignUpForm;
