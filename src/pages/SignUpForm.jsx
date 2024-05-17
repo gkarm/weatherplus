@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import './style.css';
+import '../Components/style.css';
 import {Link} from "react-router-dom";
-import {auth} from './firebase.jsx';
+import {auth} from '../Components/firebase.jsx';
 import {createUserWithEmailAndPassword } from 'firebase/auth';
 import {useNavigate} from "react-router-dom";
 
@@ -17,10 +17,10 @@ const SignUpForm = () => {
         try {
            await createUserWithEmailAndPassword(auth, email, password);
              navigate('/login')
-            console.log("Account Created");
+
 
         } catch (err) {
-            console.log(err)
+
         }
     }
 

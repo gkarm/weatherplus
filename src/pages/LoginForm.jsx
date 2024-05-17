@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import './style.css';
+import '../Components/style.css';
 import {Link} from "react-router-dom";
-import {auth} from './firebase.jsx';
+import {auth} from '../Components/firebase.jsx';
 import {signInWithEmailAndPassword } from 'firebase/auth'
 import {useNavigate} from 'react-router-dom'
 
