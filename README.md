@@ -117,3 +117,6 @@ You Have a react , Java Script , CSS and Html technologie to have a responsive w
 Open weather api give the current weather forecast and
 google firebase for the authentication and login. 
 
+######  How to run project #####
+
+http://localhost:5173/
