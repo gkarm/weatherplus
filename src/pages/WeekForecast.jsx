@@ -104,4 +104,3 @@ const WeeklyWeather = () => {
 };
 
 export default WeeklyWeather;
-
