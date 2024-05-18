@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import {GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import {Link} from "react-router-dom";
-
 import './WeatherPlusApp.css'
 import search_icon from "/src/assets/search.png";
 import clear_icon from "/src/assets/clear.png";
@@ -11,13 +8,10 @@ import rain_icon from "/src/assets/rain.png";
 import snow_icon from "/src/assets/snow.png";
 import wind_icon from "/src/assets/wind.png";
 import humidity_icon from "/src/assets/humidity.png";
-// import Navbar from "../Navbar";
-
 const WeatherPlusApp = () => {
 
     let api_key= "b8a5b939482c713ddb5f0c28ee6c2dd6";
     const [wicon,setWicon] = useState(cloud_icon);
-    const [mapCenter, setMapCenter] = useState({lat:0, lng:0});
 
     const search = async () => {
         const element =document.getElementsByClassName("cityInput");
@@ -37,8 +31,6 @@ const WeatherPlusApp = () => {
         wind[0].innerHTML = Math.floor(data.wind.speed)+" km/h";
         temperature[0].innerHTML = Math.floor(data.main.temp)+" °C";
         location[0].innerHTML = data.name;
-
-        setMapCenter({lat: data.coord.lat, lng: data.coord.lon});
 
         if (data.weather[0].icon==="01d" || data.weather[0].icon==="01n")
         {
@@ -75,8 +67,8 @@ const WeatherPlusApp = () => {
     };
 
     return (
-        <LoadScript googleMapsApiKey="AIzaSyDDQukFhFA_ohffPNJkvLMDydA_uZ8XXDc">
-            {/*<Navbar />*/}
+
+
         <div className='container'>
             <div className="top-bar">
                 <input type="text" className="cityInput" placeholder="Search"/>
@@ -110,20 +102,9 @@ const WeatherPlusApp = () => {
             </div>
             </div>
            
-            <div style={{ height: '400px', width: '100%' }}>
-                <GoogleMap
-                    mapContainerStyle={{ height: '100%', width: '100%' }}
-                    center={mapCenter}
-                    zoom={10}
-                    onLoad={(map) => {
-                        // Do something when the map is loaded
-                    }}
-                >
-                    <Marker position={mapCenter} />
-                </GoogleMap>
-            </div>
+
         </div>
-        </LoadScript>
+
     );
 };
 

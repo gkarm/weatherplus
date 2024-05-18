@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className='navbar'>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/7days">7 Days Forecast</Link></li>
+                <li><Link to="weekForecast">7 Days Forecast</Link></li>
                 <li><Link to="/hourly">Hourly Forecast</Link></li>
                 <li><Link to="/map">Map</Link></li>
                 {user ? (

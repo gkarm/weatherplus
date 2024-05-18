@@ -13,6 +13,7 @@ import Layout from './Components/Layout.jsx';
 // import Layout from './Components/Layout/Layout.jsx';
 // import { AppProvider } from './context/AppContext';
 import { AppProvider} from './Context/AppContext.jsx';
+import WeekForecast from "./pages/WeekForecast.jsx";
 // Define the routes
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path: 'login',
         element: <Layout><LoginForm /></Layout>,
+    },
+    {
+      path: 'weekForecast',
+      element: <Layout><WeekForecast /></Layout>
     },
 ]);
 
