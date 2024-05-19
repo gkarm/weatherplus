@@ -109,10 +109,11 @@ After a succefull login , user can access the app with the search bar.
 user can then search for a city and the app will display the result with the forcast.
 with the wind and humidity.
 
-You Have a react , Java Script , CSS and Html technologie to have a responsive web application using 2 api.
+You Have a react , Java Script , CSS and Html technologie to have a responsive web application using 3 api.
 - open weather api
   and
 - google firebase api.
+- google maps
 
 Open weather api give the current weather forecast and
 google firebase for the authentication and login. 
