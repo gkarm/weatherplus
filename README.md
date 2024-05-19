@@ -86,7 +86,7 @@ const analytics = getAnalytics(app);
 
 
 ## Link to figma
-https://www.figma.com/file/2sMplAOWoSRxy80at9QJxD/WeatherPlusApp?type=design&node-id=4%3A76&mode=design&t=ZkOOHajUMyinBzlA-1
+https://www.figma.com/design/T2AENU4G81wVHs2s20uciM/weatherplus?node-id=0%3A1&t=ijB1HiIUpeY8an8L-1
 
 
 ## Installation
@@ -118,5 +118,5 @@ Open weather api give the current weather forecast and
 google firebase for the authentication and login. 
 
 ######  How to run project #####
-
+point to: 
 http://localhost:5173/

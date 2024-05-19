@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import MapWithDirections from '../Components/MapWithDirections';
 
 const MapPage = () => {
-    const [originCity, setOriginCity] = useState('San Francisco');
-    const [destinationCity, setDestinationCity] = useState('Los Angeles');
+    const [originCity, setOriginCity] = useState('Maastricht');
+    const [destinationCity, setDestinationCity] = useState('Utrecht');
 
     const handleOriginChange = (e) => {
         setOriginCity(e.target.value);
