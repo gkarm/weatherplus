@@ -118,5 +118,7 @@ Open weather api give the current weather forecast and
 google firebase for the authentication and login. 
 
 ######  How to run project #####
+
+# npm run dev
 point to: 
 http://localhost:5173/
