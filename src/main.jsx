@@ -8,8 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUpForm from './pages/SignUpForm.jsx';
 import LoginForm from "./pages/LoginForm.jsx";
 import Layout from './Components/Layout.jsx';
-// import Layout from './Components/Layout/Layout.jsx';
-// import { AppProvider } from './context/AppContext';
+
 import { AppProvider} from './Context/AppContext.jsx';
 import WeekForecast from "./pages/WeekForecast.jsx";
 import MapPage from './pages/MapPage.jsx';
