@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -13,6 +14,7 @@ import Layout from './Components/Layout.jsx';
 import { AppProvider} from './Context/AppContext.jsx';
 import WeekForecast from "./pages/WeekForecast.jsx";
 import MapPage from './pages/MapPage.jsx';
+import HourlyForecast from "./pages/WeatherPlusApp/HourlyForecast.jsx";
 
 const router = createBrowserRouter([
     {
@@ -39,12 +41,20 @@ const router = createBrowserRouter([
       path: 'map',
       element: <Layout><MapPage /></Layout>
     },
+    {
+        path:'hourly',
+        element: <Layout><HourlyForecast /></Layout>
+    },
+
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+
         <AppProvider>
             <RouterProvider router={router} />
         </AppProvider>
+
     </React.StrictMode>,
 );

@@ -1,8 +1,15 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import {Router, Route, Link,} from "react-router-dom";
+// import  { useContext } from 'react';
+// import {Link, Route, Routes} from 'react-router-dom';
 // import { AppContext } from '../../context/AppContext';
 import {AppContext} from '../../Context/AppContext.jsx';
+import WeeklyWeather from "../../pages/WeekForecast.jsx";
+import HourlyForecast from "../../pages/WeatherPlusApp/HourlyForecast.jsx";
+import MapPage from "../../pages/MapPage.jsx";
 import './Navbar.css';
+import LoginForm from "../../pages/LoginForm.jsx";
+import {useContext} from "react";
+
 
 const Navbar = () => {
     const { user, logout } = useContext(AppContext);
@@ -23,6 +30,13 @@ const Navbar = () => {
                     <li><Link to="/login">Register/Sign In</Link></li>
                 )}
             </ul>
+            {/*<Router>*/}
+            {/*    <Route path="/" element={<AppContext />} />*/}
+            {/*    <Route path="/weekForecast" element={<WeeklyWeather />} />*/}
+            {/*    <Route path="/hourly" element={<HourlyForecast />} />*/}
+            {/*    <Route path="/map" element={<MapPage />} />*/}
+            {/*    <Route path="/login" element={<LoginForm />} />*/}
+            {/*</Router>*/}
         </div>
     );
 };
