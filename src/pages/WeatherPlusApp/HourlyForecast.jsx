@@ -17,22 +17,22 @@ const HourlyForecast = () => {
         if (city === "") return;
 
         try {
-            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=metric&cnt=7`; // Fixed backticks for template literals
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=metric&cnt=7`;
             const response = await fetch(url);
 
             if (!response.ok) {
-                throw new Error(`Error: ${response.status} ${response.statusText}`); // Corrected error message
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
 
             const data = await response.json();
-            setHourlyData(data.list.slice(0, 12)); // Get only the next 8 hours of data
+            setHourlyData(data.list.slice(0, 12));
             setError(null);
         } catch (error) {
             setError(error.message);
             setHourlyData([]);
         }
     };
-    // change made for github
+
     return (
         <div className='hourly-container'>
             <div className="top-bar">
