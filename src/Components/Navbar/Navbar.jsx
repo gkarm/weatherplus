@@ -30,13 +30,7 @@ const Navbar = () => {
                     <li><Link to="/login">Register/Sign In</Link></li>
                 )}
             </ul>
-            {/*<Router>*/}
-            {/*    <Route path="/" element={<AppContext />} />*/}
-            {/*    <Route path="/weekForecast" element={<WeeklyWeather />} />*/}
-            {/*    <Route path="/hourly" element={<HourlyForecast />} />*/}
-            {/*    <Route path="/map" element={<MapPage />} />*/}
-            {/*    <Route path="/login" element={<LoginForm />} />*/}
-            {/*</Router>*/}
+
         </div>
     );
 };
