@@ -1,5 +1,10 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import React, { useState, useCallback, useEffect } from "react";
+import {
+    GoogleMap,
+    LoadScript,
+    DirectionsService,
+    DirectionsRenderer,
+} from "@react-google-maps/api";
 
 const MapWithDirections = ({ originCity, destinationCity }) => {
     const [origin, setOrigin] = useState(null);
@@ -9,10 +14,10 @@ const MapWithDirections = ({ originCity, destinationCity }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const directionsCallback = useCallback((res) => {
         if (res !== null) {
-            if (res.status === 'OK') {
+            if (res.status === "OK") {
                 setResponse(res);
             } else {
-                console.error('Response:', res);
+                console.error("Response:", res);
             }
         }
     }, []);
@@ -22,24 +27,26 @@ const MapWithDirections = ({ originCity, destinationCity }) => {
     };
 
     const containerStyle = {
-        width: '100%',
-        height: '400px',
+        width: "100%",
+        height: "400px",
     };
 
     const center = {
-        lat: origin?.lat || 50.851368, // Default to Maastricht
-        lng: origin?.lng || 5.690973, // Default to Maastricht
+        lat: origin?.lat || 50.851368,
+        lng: origin?.lng || 5.690973,
     };
 
     const geocodeCity = useCallback((city, setCityCoordinates) => {
         if (window.google && window.google.maps) {
             const geocoder = new window.google.maps.Geocoder();
             geocoder.geocode({ address: city }, (results, status) => {
-                if (status === 'OK' && results[0]) {
+                if (status === "OK" && results[0]) {
                     const location = results[0].geometry.location;
                     setCityCoordinates({ lat: location.lat(), lng: location.lng() });
                 } else {
-                    console.error('Geocode was not successful for the following reason: ' + status);
+                    console.error(
+                        "Geocode was not successful for the following reason: " + status
+                    );
                 }
             });
         }
@@ -73,7 +80,7 @@ const MapWithDirections = ({ originCity, destinationCity }) => {
                         options={{
                             destination: destination,
                             origin: origin,
-                            travelMode: 'DRIVING',
+                            travelMode: "DRIVING",
                         }}
                         callback={directionsCallback}
                     />
