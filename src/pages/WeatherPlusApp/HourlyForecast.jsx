@@ -1,10 +1,9 @@
-
-import React, { useState } from 'react';
+import { useState } from "react";
 
 import search_icon from "/src/assets/search.png";
 import humidity_icon from "/src/assets/humidity.png";
 import wind_icon from "/src/assets/wind.png";
-import './HourlyForecast.css';
+import "./HourlyForecast.css";
 
 const HourlyForecast = () => {
     const [city, setCity] = useState("");
@@ -26,15 +25,17 @@ const HourlyForecast = () => {
 
             const data = await response.json();
             setHourlyData(data.list.slice(0, 12));
+
             setError(null);
         } catch (error) {
             setError(error.message);
             setHourlyData([]);
+            console.error("Error fetching weather data:", error);
         }
     };
 
     return (
-        <div className='hourly-container'>
+        <main className="hourly-container">
             <div className="top-bar">
                 <input
                     type="text"
@@ -44,13 +45,13 @@ const HourlyForecast = () => {
                     onChange={(e) => setCity(e.target.value)}
                 />
                 <div className="search-icon" onClick={search}>
-                    <img src={search_icon} alt="Search Icon"/>
+                    <img src={search_icon} alt="Search Icon" />
                 </div>
             </div>
             {error && <div className="error-message">{error}</div>}
             <div className="hourly-data-container">
-                {hourlyData.length > 0 ? (
-                    hourlyData.map((hour, index) => (
+                {hourlyData.length > 0
+                    ? hourlyData.map((hour, index) => (
                         <div key={index} className="hour-container">
                             <div className="hour-time">
                                 {new Date(hour.dt * 1000).toLocaleTimeString([], {
@@ -61,26 +62,32 @@ const HourlyForecast = () => {
                             <div className="temp">{Math.floor(hour.main.temp)}°C</div>
                             <div className="description">{hour.weather[0].description}</div>
                             <div className="humidity">
-                                <img src={humidity_icon} alt="Humidity Icon" className="icon"/>
+                                <img
+                                    src={humidity_icon}
+                                    alt="Humidity Icon"
+                                    className="icon"
+                                />
                                 <div className="data">
-                                    <div className="humidity-percent">{hour.main.humidity}%</div>
+                                    <div className="humidity-percent">
+                                        {hour.main.humidity}%
+                                    </div>
                                     <div className="text">Humidity</div>
                                 </div>
                             </div>
                             <div className="wind">
-                                <img src={wind_icon} alt="Wind Icon" className="icon"/>
+                                <img src={wind_icon} alt="Wind Icon" className="icon" />
                                 <div className="data">
-                                    <div className="wind-rate">{Math.floor(hour.wind.speed)} km/h</div>
+                                    <div className="wind-rate">
+                                        {Math.floor(hour.wind.speed)} km/h
+                                    </div>
                                     <div className="text">Wind Speed</div>
                                 </div>
                             </div>
                         </div>
                     ))
-                ) : (
-                    !error && <div className="no-data-message">No data available</div>
-                )}
+                    : !error && <div className="no-data-message">No data available</div>}
             </div>
-        </div>
+        </main>
     );
 };
 
