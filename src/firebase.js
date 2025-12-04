@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getAuth} from 'firebase/auth'
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBVX93gULe-SqTISGQNlhrz8TX2HYFu4Tk",
@@ -8,11 +8,10 @@ const firebaseConfig = {
     storageBucket: "weatherplus-51c48.appspot.com",
     messagingSenderId: "962047294014",
     appId: "1:962047294014:web:e3d070ccf0fa12a2916f6f",
-    measurementId: "G-DQ1HZNGJS4"
+    measurementId: "G-DQ1HZNGJS4",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-export {auth}
+export { auth };
