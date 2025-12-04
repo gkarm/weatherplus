@@ -1,51 +1,53 @@
-import React, {useEffect, useState} from 'react';
-import '../Components/style.css';
-import {Link} from "react-router-dom";
-import {auth} from '../Components/firebase.jsx';
-import {signInWithEmailAndPassword } from 'firebase/auth'
-import {useNavigate} from 'react-router-dom'
-
-
+import { useState } from "react";
+import "../Components/style.css";
+import { Link } from "react-router-dom";
+import { auth } from "/firebase.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-
-
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password)
-            navigate("/WeatherPlusAPP")
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate("/WeatherPlusAPP");
             console.log("Login successfully");
-
-
         } catch (err) {
-            console.log(err)
+            console.error("Login failed:", err);
         }
-
-
     };
-
-
     return (
-        <div className='signup-container'>
-            <form className='signup-form' onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <label htmlFor="email">
-                    Email:
-                    <input type="text" onChange={(e) =>setEmail(e.target.value)}/>
-                </label>
-                <label htmlFor="password">
-                    Password:
-                    <input type="password" onChange={(e) =>setPassword(e.target.value)}/>
-                </label>
-                <button type='submit'>Login</button> <br/>
-                <p>Don't Have an account? <Link to="/signup">Register</Link></p>
+        <main className="signup-container">
+            <form className="signup-form" onSubmit={handleSubmit}>
+                <h1>Login</h1>
+
+                <label htmlFor="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+
+                <button type="submit">Login</button>
+
+                <p>
+                    Don’t have an account? <Link to="/signup">Register</Link>
+                </p>
             </form>
-        </div>
+        </main>
     );
 };
 
