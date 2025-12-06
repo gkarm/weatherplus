@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./WeekForecast.css";
 
-import drizzle_icon from "src/assets/drizzle.png";
+import drizzle_icon from "../assets/drizzle.png";
 import search_icon from "/src/assets/search.png";
 import clear_icon from "/src/assets/clear.png";
 import cloud_icon from "/src/assets/cloud.png";
