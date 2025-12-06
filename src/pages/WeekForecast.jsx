@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './WeekForecast.css';
+import { useState, useEffect } from "react";
+import "./WeekForecast.css";
 
+import drizzle_icon from "src/assets/drizzle.png";
 import search_icon from "/src/assets/search.png";
 import clear_icon from "/src/assets/clear.png";
 import cloud_icon from "/src/assets/cloud.png";
-import drizzle_icon from "/src/assets/drizzle.png";
 import rain_icon from "/src/assets/rain.png";
 import snow_icon from "/src/assets/snow.png";
 import humidity_icon from "/src/assets/humidity.png";
@@ -35,7 +35,7 @@ const WeeklyWeather = () => {
                 setError(null);
             } else {
                 setWeeklyData([]);
-                setError('No data available');
+                setError("No data available");
             }
         } catch (error) {
             setError(error.message);
@@ -55,7 +55,7 @@ const WeeklyWeather = () => {
     }, [weeklyData]);
 
     return (
-        <div className='container'>
+        <main className="container">
             <div className="top-bar">
                 <input
                     type="text"
@@ -65,41 +65,47 @@ const WeeklyWeather = () => {
                     onChange={(e) => setCity(e.target.value)}
                 />
                 <div className="search-icon" onClick={search}>
-                    <img src={search_icon} alt="Search Icon"/>
+                    <img src={search_icon} alt="Search Icon" />
                 </div>
             </div>
             <div className="weather-image">
-                <img src={wicon} alt="Weather Icon"/>
+                <img src={wicon} alt="Weather Icon" />
             </div>
             {error && <div className="error-message">{error}</div>}
             <div className="data-container">
-                {weeklyData.length > 0 ? (
-                    weeklyData.map((day, index) => (
+                {weeklyData.length > 0
+                    ? weeklyData.map((day, index) => (
                         <div key={index} className="day-container">
-                            <div className="day">{new Date(day.dt * 1000).toLocaleDateString()}</div>
+                            <div className="day">
+                                {new Date(day.dt * 1000).toLocaleDateString()}
+                            </div>
                             <div className="temp">{Math.floor(day.main.temp)}°C</div>
                             <div className="description">{day.weather[0].description}</div>
                             <div className="humidity">
-                                <img src={humidity_icon} alt="Humidity Icon" className="icon"/>
+                                <img
+                                    src={humidity_icon}
+                                    alt="Humidity Icon"
+                                    className="icon"
+                                />
                                 <div className="data">
                                     <div className="humidity-percent">{day.main.humidity}%</div>
                                     <div className="text">Humidity</div>
                                 </div>
                             </div>
                             <div className="wind">
-                                <img src={wind_icon} alt="Wind Icon" className="icon"/>
+                                <img src={wind_icon} alt="Wind Icon" className="icon" />
                                 <div className="data">
-                                    <div className="wind-rate">{Math.floor(day.wind.speed)} km/h</div>
+                                    <div className="wind-rate">
+                                        {Math.floor(day.wind.speed)} km/h
+                                    </div>
                                     <div className="text">Wind Speed</div>
                                 </div>
                             </div>
                         </div>
                     ))
-                ) : (
-                    !error && <div className="no-data-message">No data available</div>
-                )}
+                    : !error && <div className="no-data-message">No data available</div>}
             </div>
-        </div>
+        </main>
     );
 };
 
