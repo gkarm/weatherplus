@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../Components/style.css";
+import "./SignUpForm.css";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../Context/AppContext.jsx";
 
 const SignUpForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const { login } = useContext(AppContext);
+    const [message, setMessage] = useState(null);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            navigate("/login");
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password,
+            );
+
+            login({ email: userCredential.user.email });
+            setMessage("Registration successful, redirecting to app...");
+            setEmail("");
+            setPassword("");
+            navigate("/weatherPlusApp");
         } catch (err) {
             console.error("Error signing up:", err);
-            alert("Failed to sign up. Please try again.");
+            setMessage("Failed to sign up: " + err.message);
         }
     };
 
@@ -25,6 +39,7 @@ const SignUpForm = () => {
         <main className="signup-container">
             <form className="signup-form" onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
+                {message && <div className="form-message">{message}</div>}
 
                 <label htmlFor="email">Email:</label>
                 <input

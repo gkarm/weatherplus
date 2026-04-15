@@ -12,6 +12,10 @@ const MapWithDirections = ({ originCity, destinationCity }) => {
     const [response, setResponse] = useState(null);
     const [map, setMap] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [error, setError] = useState(null);
+    const [loadingOrigin, setLoadingOrigin] = useState(false);
+    const [loadingDestination, setLoadingDestination] = useState(false);
+
     const directionsCallback = useCallback((res) => {
         if (res !== null) {
             if (res.status === "OK") {
@@ -36,37 +40,49 @@ const MapWithDirections = ({ originCity, destinationCity }) => {
         lng: origin?.lng || 5.690973,
     };
 
-    const geocodeCity = useCallback((city, setCityCoordinates) => {
-        if (window.google && window.google.maps) {
-            const geocoder = new window.google.maps.Geocoder();
-            geocoder.geocode({ address: city }, (results, status) => {
-                if (status === "OK" && results[0]) {
-                    const location = results[0].geometry.location;
-                    setCityCoordinates({ lat: location.lat(), lng: location.lng() });
-                } else {
-                    console.error(
-                        "Geocode was not successful for the following reason: " + status
-                    );
-                }
-            });
-        }
-    }, []);
+    const geocodeCity = async (city) => {
+        return new Promise((resolve, reject) => {
+            if (window.google && window.google.maps) {
+                const geocoder = new window.google.maps.Geocoder();
+                geocoder.geocode({ address: city }, (results, status) => {
+                    if (status === "OK" && results[0]) {
+                        const location = results[0].geometry.location;
+                        resolve({ lat: location.lat(), lng: location.lng() });
+                    } else {
+                        reject(status);
+                    }
+                });
+            } else {
+                reject("Google maps not available");
+            }
+        });
+    };
 
     useEffect(() => {
         if (isLoaded && originCity) {
-            geocodeCity(originCity, setOrigin);
+            setLoadingOrigin(true);
+            setError(null);
+            geocodeCity(originCity)
+                .then((coords) => setOrigin(coords))
+                .catch((e) => setError(`Origin geocode error: ${e}`))
+                .finally(() => setLoadingOrigin(false));
         }
-    }, [originCity, geocodeCity, isLoaded]);
+    }, [originCity, isLoaded]);
 
     useEffect(() => {
         if (isLoaded && destinationCity) {
-            geocodeCity(destinationCity, setDestination);
+            setLoadingDestination(true);
+            setError(null);
+            geocodeCity(destinationCity)
+                .then((coords) => setDestination(coords))
+                .catch((e) => setError(`Destination geocode error: ${e}`))
+                .finally(() => setLoadingDestination(false));
         }
-    }, [destinationCity, geocodeCity, isLoaded]);
+    }, [destinationCity, isLoaded]);
 
     return (
         <LoadScript
-            googleMapsApiKey="AIzaSyDDQukFhFA_ohffPNJkvLMDydA_uZ8XXDc"
+            googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}
             onLoad={() => setIsLoaded(true)}
         >
             <GoogleMap

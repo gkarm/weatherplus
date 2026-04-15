@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MapWithDirections from "../Components/MapWithDirections";
 
-import "./WeekForecast.css";
+import "./MapPage.css";
 
 const MapPage = () => {
     const [originCity, setOriginCity] = useState("Maastricht");
@@ -16,9 +16,17 @@ const MapPage = () => {
     };
     return (
         <main className="map-container">
-            <h1>Map</h1>
+            <header>
+                <h1>Map</h1>
+            </header>
 
-            <form className="map-form" onSubmit={(e) => e.preventDefault()}>
+            <form
+                className="map-form"
+                onSubmit={(e) => {
+                    e.preventDefault();
+
+                }}
+            >
                 <label htmlFor="originCity">Origin City:</label>
                 <input
                     type="text"
@@ -34,6 +42,10 @@ const MapPage = () => {
                     value={destinationCity}
                     onChange={handleDestinationChange}
                 />
+
+                <button type="submit" className="map-submit">
+                    Show Route
+                </button>
             </form>
 
             <section className="map-wrapper" aria-label="Route Map">
