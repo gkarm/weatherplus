@@ -1,5 +1,3 @@
-
-
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext.jsx";
@@ -23,45 +21,40 @@ const Navbar = () => {
                 </button>
 
                 <ul className={`nav-menu ${isOpen ? "active" : ""}`}>
-                    <li>
-                        <Link to="/" onClick={() => setIsOpen(false)}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/weekForecast" onClick={() => setIsOpen(false)}>
-                            7 Days Forecast
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/hourly" onClick={() => setIsOpen(false)}>
-                            Hourly Forecast
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/map" onClick={() => setIsOpen(false)}>
-                            Map
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/blog" onClick={() => setIsOpen(false)}>
-                            Blog
-                        </Link>
-                    </li>
+                    {
+
+                    }
+                    {[
+                        { to: "/", label: "Home" },
+                        { to: "/weekForecast", label: "7 Days" },
+                        { to: "/hourly", label: "Hourly" },
+                        { to: "/map", label: "Map" },
+                        { to: "/blog", label: "Blog" },
+                    ].map((item) => (
+                        <li key={item.to}>
+                            <Link to={item.to} onClick={() => setIsOpen(false)}>
+                                {item.label}
+                            </Link>
+                        </li>
+                    ))}
 
                     {user ? (
                         <>
                             <li>
-                                <span>Welcome, {user.name}</span>
+                <span className="welcome-text">
+                  Welcome, {user.email || user.name}
+                </span>
                             </li>
                             <li>
-                                <button onClick={logout}>Logout</button>
+                                <button onClick={logout} className="logout-button">
+                                    Logout
+                                </button>
                             </li>
                         </>
                     ) : (
                         <li>
                             <Link to="/login" onClick={() => setIsOpen(false)}>
-                                Register/Sign In
+                                Register / Sign In
                             </Link>
                         </li>
                     )}
@@ -72,4 +65,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
